@@ -51,7 +51,7 @@ def return_graph():
         maped_stock_data_add = []
         maped_stock_data_lose = []
         maped_qnty = []
-
+        #print(stockDataObj)
         for dataObj in stockDataObj:
             if (dataObj.get('quantity') < 0):
                 price_lose += dataObj.get('item_price')
@@ -71,7 +71,7 @@ def return_graph():
     # fig = plt.figure()
     # plt.plot(maped_qnty, maped_qnty)
     reduced = np.array(maped_qnty)
-    getArr = np.partition(-reduced, 5)
+    getArr = np.partition(-reduced, 2)
     result = -getArr[:5]
     lengths = result.__len__
     colors = ['green']
@@ -83,8 +83,8 @@ def return_graph():
             color=colors)
     ax.set_title("histogram of result")
     ax.set_xticks([0, 25, 50, 75, 100])
-    ax.set_xlabel('marks')
-    ax.set_ylabel('no. of students')
+    ax.set_xlabel('Qty')
+    ax.set_ylabel('no.')
 
     imgdata = StringIO()
     fig.savefig(imgdata, format='svg')
